@@ -1,0 +1,13 @@
+---
+
+jenkinsslave_nodename: 'jenkinsnode'
+jenkinsslave_user: jenkins
+jenkinsslave_home: /var/lib/jenkins
+
+## Jenkins Master information
+#jenkinsslave_masteransiblename: 'master'
+jenkinsslave_masterurl: "http://x.y.z.1:8080"
+jenkinsslave_masterjar: "/opt/jenkins-cli.jar"
+jenkinsslave_masteruser: 'admin'
+jenkinsslave_masterpass: 'admin'
+

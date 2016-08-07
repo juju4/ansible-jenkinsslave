@@ -1,0 +1,26 @@
+---
+## https://wiki.jenkins-ci.org/display/JENKINS/Distributed+builds
+## Slave must have ssh and java installed
+
+- name: Recover jenkins ssh keys from master to orchestrator
+  fetch: src="/home/jenkins/.ssh/id_rsa.pub" dest=tmp/
+  delegate_to: "{{ jenkinsslave_masteransiblename }}"
+- name: set up master ssh key on client
+  copy: src="tmp/{{ inventory_hostname }}/home/jenkins/.ssh/id_rsa.pub" dest="{{ jenkinsslave_home }}/.ssh/authorized_keys" mode=0400 owner="{{ jenkinsslave_user }}"
+
+- name: login into jenkins
+  command: "java -jar {{ jenkinsslave_masterjar }} -s {{ jenkinsslave_masterurl }} login --username {{ jenkinsslave_masteruser }} --password {{ jenkinsslave_masterpass }}"
+  ignore_errors: true
+  delegate_to: "{{ jenkinsslave_masteransiblename }}"
+- name: check if node exist on master
+  command: "java -jar {{ jenkinsslave_masterjar }} -s {{ jenkinsslave_masterurl }} get-node {{ jenkinsslave_nodename }}"
+  changed_when: false
+  register: nodestate
+  ignore_errors: true
+  delegate_to: "{{ jenkinsslave_masteransiblename }}"
+- name: Add new node on master
+  shell: "java -jar {{ jenkinsslave_masterjar }} -s {{ jenkinsslave_masterurl }} create-node {{ jenkinsslave_nodename }}"
+#  shell: "java -jar jenkins-cli.jar -s [JENKINS_URL] get-node [NodeToCopyFrom] | java -jar jenkins-cli.jar -s [JENKINS_URL] create-node [NewNodeName]"
+  delegate_to: "{{ jenkinsslave_masteransiblename }}"
+  when: nodestate is defined and nodestated.rc != 0
+

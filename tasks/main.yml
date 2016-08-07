@@ -1,0 +1,12 @@
+---
+
+- include: jenkins-slave.yml
+- include: tasks/jenkins-connect-master.yml
+  when: jenkinsslave_masteransiblename is defined and jenkinsslave_masteransiblename != ''
+
+#- include: debian.yml
+#  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
+#- include: redhat.yml
+#  when: ansible_os_family == "RedHat" or ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
