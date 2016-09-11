@@ -32,4 +32,4 @@ script:
 
 # Serverspec
 #  - "test/integration/default/serverspec/run-local-tests.sh"
-  - "cd test/integration/default/serverspec/ && bundle exec rake spec"
+#  - "cd test/integration/default/serverspec/ && bundle exec rake spec"
