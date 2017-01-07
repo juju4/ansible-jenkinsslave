@@ -5,5 +5,5 @@
 #  vars:
 #    - a:
   roles:
-    - jenkinsslave
+    - juju4.jenkinsslave
 
