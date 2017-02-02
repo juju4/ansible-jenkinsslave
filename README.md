@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/juju4/ansible-jenkinsslave.svg?branch=master)](https://travis-ci.org/juju4/ansible-jenkinsslave)
+[![Build Status - Master](https://travis-ci.org/juju4/ansible-jenkinsslave.svg?branch=master)](https://travis-ci.org/juju4/ansible-jenkinsslave)
+[![Build Status - Devel](https://travis-ci.org/juju4/ansible-jenkinsslave.svg?branch=devel)](https://travis-ci.org/juju4/ansible-jenkinsslave/branches)
 # Jenkins Slave ansible role
 
 Ansible role to setup Jenkins Slave
@@ -9,6 +10,7 @@ It will set up ssh key connection between slave and master.
 ### Ansible
 It was tested on the following versions:
  * 2.0
+ * 2.2
 
 ### Operating systems
 
