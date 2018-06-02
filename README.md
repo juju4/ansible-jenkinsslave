@@ -11,6 +11,7 @@ It will set up ssh key connection between slave and master.
 It was tested on the following versions:
  * 2.0
  * 2.2
+ * 2.5
 
 ### Operating systems
 
@@ -24,7 +25,7 @@ For example
 ```
 - host: all
   roles:
-    - jenkinsslave
+    - juju4.jenkinsslave
 ```
 
 ## Variables
@@ -37,13 +38,13 @@ This role has a travis basic test (for github), more advanced with kitchen and a
 
 Once you ensured all necessary roles are present, You can test with:
 ```
-$ cd /path/to/roles/jenkinsslave
+$ cd /path/to/roles/juju4.jenkinsslave
 $ kitchen verify
 $ kitchen login
 ```
 or
 ```
-$ cd /path/to/roles/jenkinsslave/test/vagrant
+$ cd /path/to/roles/juju4.jenkinsslave/test/vagrant
 $ vagrant up
 $ vagrant ssh
 ```
