@@ -1,5 +1,5 @@
 ---
-dist: trusty
+dist: xenial
 language: python
 python: "2.7"
 before_install:
@@ -10,13 +10,13 @@ before_install:
 # - mkdir /tmp/kitchen
 # - ln -s /home/travis/build/juju4/ansible-jenkinsslave/test/integration/default/tmp /tmp/kitchen/tmp
 ## serverspec test
- - sudo apt-get install -qq ruby2.0 rake
-# - sudo gem2.0 install serverspec
+ - sudo apt-get install -qq ruby rake
+# - sudo gem install serverspec
 install:
   - pip install ansible
   - ansible --version
   - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
-#  - gem2.0 --version
+#  - gem --version
 script:
   - "echo \"[test-kitchen]\nlocalhost\" > inventory"
 
